@@ -120,3 +120,39 @@ class Database:
         ORDER BY a.created_at DESC;
         """
         return await self.execute(sql, fetch=True)
+
+    # ---------------- DOCUMENTS TABLE ---------------- #
+    async def create_table_documents(self):
+        sql = """
+        CREATE TABLE IF NOT EXISTS documents (
+            id SERIAL PRIMARY KEY,
+            user_id VARCHAR NOT NULL REFERENCES users(id),
+            theme TEXT,
+            file_id TEXT NOT NULL,
+            file_type VARCHAR(20) NOT NULL,
+            created_at TIMESTAMP
+        );
+        """
+        await self.execute(sql, execute=True)
+
+    async def add_document(self, user_id: str, theme: str, file_id: str, file_type: str, created_at):
+        sql = """
+        INSERT INTO documents (user_id, theme, file_id, file_type, created_at)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *;
+        """
+        return await self.execute(sql, user_id, theme, file_id, file_type, created_at, fetchrow=True)
+
+    async def select_user_documents(self, user_id: str):
+        sql = "SELECT * FROM documents WHERE user_id = $1 ORDER BY created_at DESC"
+        return await self.execute(sql, user_id, fetch=True)
+
+    async def select_all_documents(self):
+        sql = """
+        SELECT d.id, d.theme, d.file_id, d.file_type, d.created_at, 
+               u.full_name, u.username, u.language
+        FROM documents d
+        JOIN users u ON d.user_id = u.id
+        ORDER BY d.created_at DESC;
+        """
+        return await self.execute(sql, fetch=True)

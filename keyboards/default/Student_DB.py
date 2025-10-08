@@ -8,6 +8,9 @@ lang_uz_main_m = ReplyKeyboardMarkup(
             KeyboardButton(text="✍️️Murojaat yuborish")
         ],
         [
+          KeyboardButton(text="📂Hujjat yuborish")
+        ],
+        [
             KeyboardButton(text="🇺🇿Tilni o'zgartish🇷🇺")
         ]
     ], resize_keyboard=True
@@ -18,6 +21,9 @@ lang_ru_main_m = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="👤Руководство"),
             KeyboardButton(text="✍️Отправить обращение")
+        ],
+        [
+            KeyboardButton(text="📂Отправить документ")
         ],
         [
             KeyboardButton(text="🇷🇺Изменить язык🇺🇿")
