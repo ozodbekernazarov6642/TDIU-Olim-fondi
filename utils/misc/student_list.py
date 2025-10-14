@@ -1,6 +1,39 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-students = [f"Talaba {i}" for i in range(1, 31)]
+students = [
+    "Mufazzal Rustamjonova",
+    "Komron Tursunmurodov",
+    "Bekzodbek Istamov",
+    "Nazokat Umarova",
+    "Visolaxon To‘lqinova",
+    "Ozodbek Yuldashev",
+    "Rahima Narzullayeva",
+    "Jasurbek Sodiqov",
+    "Laylo Nurullayeva",
+    "Xurshida Valiyeva",
+    "Vasilya Xujaqulova",
+    "Dilnoza Otamurodova",
+    "Nayimjon Rayimov",
+    "Mehriniso Jumanazora",
+    "Xusayn Tursunboyev",
+    "E’zoza Ulug’bekovna",
+    "Marjonabonu Halimova",
+    "Rahmatullayev Shamshodbek",
+    "Nuraliyeva Malika",
+    "Nabiyev Nasimbek",
+    "Uralova Zinora",
+    "Normurodova Maftuna",
+    "Sulhiddinov Sardorbek",
+    "Eshmamatova Charos",
+    "Sultonova Sevinch",
+    "Mirag‘zamova Oysha",
+    "Ibodova Shahzoda",
+    "Ergasheva Marjona",
+    "Mizomova Aziza",
+    "Jurayeva Munisa",
+    "Jo‘rayeva Hulkar",
+    "Egamova Muxlisa"
+]
 
 
 def get_students_keyboard_uz(page: int = 0):

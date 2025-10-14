@@ -1,5 +1,5 @@
 from aiogram.dispatcher import FSMContext
-from aiogram.types import Message, ReplyKeyboardRemove, CallbackQuery
+from aiogram.types import Message, ReplyKeyboardRemove, CallbackQuery, InputMediaPhoto
 
 from data.config import ADMINS
 from keyboards.default.Student_DB import lang_uz_main_m, lang_ru_main_m, uz_management_list, ru_management_list, \
@@ -90,61 +90,134 @@ async def again_write_ru(call: CallbackQuery):
 
 async def fond_rah_uz(msg: Message):
     text = ("🔰Fond rahbari\n"
-            " \t<i><b>Istamov Bekzodbek Bahriddinovich</b></i>\n\n")
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
+            " \t<i><b>ZUHRA SHARIPOVA</b></i>\n\n")
+    await msg.answer_photo(photo="AgACAgIAAxkBAAEfoBho7eTPUNATYpDRiVIRD2JdA2tnBgACcQMyG7sxcEu-rOj8wnsmlwEAAwIAA3kAAzYE",
                            caption=text, reply_markup=main_menu_uz)
 
 
 async def fond_rah_ru(msg: Message):
     text = ("🔰Руководитель фонда\n"
-            " \t<i><b>Истамов Бекзодбек Бахриддинович</b></i>\n\n"
-            )
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
-                           caption=text, reply_markup=main_menu_ru)
+            " \t<i><b>ЗУХРА ШАРИПОВА</b></i>\n\n")
+    await msg.answer_photo(
+        photo="AgACAgIAAxkBAAEfoBho7eTPUNATYpDRiVIRD2JdA2tnBgACcQMyG7sxcEu-rOj8wnsmlwEAAwIAA3kAAzYE",
+        caption=text,
+        reply_markup=main_menu_ru
+    )
 
 
 async def kuz_keng_rais_uz(msg: Message):
-    text = ("🔰Kuzatuv kengashi raisi\n"
-            " \t<i><b>Istamov Bekzodbek Bahriddinovich</b></i>\n\n")
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
-                           caption=text, reply_markup=main_menu_uz)
+    text = ("🔰Kuzatuv kengashi a'zolari\n"
+            "\t<i><b>XASAN XASANOV</b></i>\n\n"
+            "\t<i><b>ODIL XASANOV</b></i>")
+    media = [
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoBxo7ehGCCOyQ4_DaVmme1oCKpkmGQACeAMyG7sxcEsIa1tKu9ZnzwEAAwIAA3gAAzYE',
+            caption=text),
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoB5o7eh9ptTdlLcVofgbL39uE7zewAACdQMyG7sxcEtxV7Qr5xahuQEAAwIAA3gAAzYE'),
+    ]
+    await msg.answer_media_group(media=media)
+    await msg.answer("⬇️ Quyidagi menyudan foydalaning:", reply_markup=main_menu_uz)
 
 
 async def kuz_keng_raisi_ru(msg: Message):
-    text = ("🔰Председатель наблюдательного совета\n"
-            " \t<i><b>Истамов Бекзодбек Бахриддинович</b></i>\n\n"
-            )
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
-                           caption=text, reply_markup=main_menu_ru)
+    text = ("🔰Члены Наблюдательного совета\n"
+            "\t<i><b>1.ХАСАН ХАСАНОВ</b></i>\n\n"
+            "\t<i><b>2.ОДИЛ ХАСАНОВ</b></i>")
+    media = [
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoBxo7ehGCCOyQ4_DaVmme1oCKpkmGQACeAMyG7sxcEsIa1tKu9ZnzwEAAwIAA3gAAzYE',
+            caption=text),
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoB5o7eh9ptTdlLcVofgbL39uE7zewAACdQMyG7sxcEtxV7Qr5xahuQEAAwIAA3gAAzYE'),
+    ]
+    await msg.answer_media_group(media=media)
+    await msg.answer("⬇️ Воспользуйтесь меню ниже:", reply_markup=main_menu_ru)
 
 
 async def cordinator_uz(msg: Message):
-    text = ("🔰Koordinator\n"
-            " \t<i><b>Istamov Bekzodbek Bahriddinovich</b></i>\n\n")
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
-                           caption=text, reply_markup=main_menu_uz)
+    text = ("🔰Koordinatorlar\n"
+            " \t<i><b>1.BEKZOD ISTAMOV</b></i>\n\n"
+            " \t<i><b>2.FAXRIDDIN BURXONOV</b></i>\n\n"
+            " \t<i><b>3.OZODBEK YO‘LDOSHEV</b></i>\n\n"
+            " \t<i><b>4.JURABEK SODIKOV</b></i>\n\n")
+    media = [
+        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCdo7ew1jfSYhApqRQkDywiminw7_QACiQMyG7sxcEvlrntdSgw00wEAAwIAA20AAzYE',
+                        caption=text),
+        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCZo7ew1eair3EnsKP1dCa2qV0rL7AACiAMyG7sxcEutp3Rq5_HpTAEAAwIAA3gAAzYE'),
+        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCho7ew1ZkBdCJ_SOanwWJ6wVkxXWAACigMyG7sxcEtRPvLr8KFjSQEAAwIAA20AAzYE'),
+        InputMediaPhoto(media='AgACAgIAAxkBAAEfoClo7ew1-JNIWJhMjzFiKd1VoHBA4wACiwMyG7sxcEvmDfLYOnG3swEAAwIAA3gAAzYE')
+    ]
+    await msg.answer_media_group(media=media)
+    await msg.answer("⬇️ Quyidagi menyudan foydalaning:", reply_markup=main_menu_uz)
 
 
-async def cordinato_ru(msg: Message):
-    text = ("🔰Координатор\n"
-            " \t<i><b>Истамов Бекзодбек Бахриддинович</b></i>\n\n")
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
-                           caption=text, reply_markup=main_menu_uz)
+async def cordinator_ru(msg: Message):
+    text = (
+        "🔰Координаторы\n"
+        "\t<i><b>1. БЕКЗОД ИСТАМОВ</b></i>\n\n"
+        "\t<i><b>2. ФАХРИДДИН БУРХОНОВ</b></i>\n\n"
+        "\t<i><b>3. ОЗОДБЕК ЙУЛДАШЕВ</b></i>\n\n"
+        "\t<i><b>4. ЖУРАБЕК СОДИКОВ</b></i>\n\n"
+    )
+
+    media = [
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoCdo7ew1jfSYhApqRQkDywiminw7_QACiQMyG7sxcEvlrntdSgw00wEAAwIAA20AAzYE',
+            caption=text),
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoCZo7ew1eair3EnsKP1dCa2qV0rL7AACiAMyG7sxcEutp3Rq5_HpTAEAAwIAA3gAAzYE'),
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoCho7ew1ZkBdCJ_SOanwWJ6wVkxXWAACigMyG7sxcEtRPvLr8KFjSQEAAwIAA20AAzYE'),
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoClo7ew1-JNIWJhMjzFiKd1VoHBA4wACiwMyG7sxcEvmDfLYOnG3swEAAwIAA3gAAzYE')
+    ]
+
+    await msg.answer_media_group(media=media)
+    await msg.answer("⬇️ Воспользуйтесь меню ниже:", reply_markup=main_menu_ru)
 
 
 async def expert_uz(msg: Message):
-    text = ("🔰Ekspert\n"
-            " \t<i><b>Istamov Bekzodbek Bahriddinovich</b></i>\n\n")
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
-                           caption=text, reply_markup=main_menu_uz)
+    text = ("🔰Ekspertlar\n"
+            "Strategik rivojlantirish eksperti\n"
+            " \t<i><b>AZAMAT AKBAROV</b></i>\n\n"
+            "Marketing va kommunikatsiya eksperti\n"
+            " \t<i><b>NIGINA BATIRALIYEVA</b></i>\n\n"
+            "Akademik faoliyat eksperti\n"
+            " \t<i><b>ZARIFA MUMINOVA</b></i>\n\n")
+    media = [
+        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCBo7esV78dERcJxgmdMNd1QB4SHlgACeQMyG7sxcEsTZWq8vyhbJgEAAwIAA3gAAzYE',
+                        caption=text),
+        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCJo7es7PRmayH-H-gSnlNTH-tWdEwACLPsxG6q5cUv3c1NN1ypK8AEAAwIAA20AAzYE'),
+        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCRo7et1cDV-ue6ylMwQmR3uu62L0gACegMyG7sxcEtCQ9qFjCwuTAEAAwIAA3gAAzYE')
+    ]
+    await msg.answer_media_group(media=media)
+    await msg.answer("⬇️ Quyidagi menyudan foydalaning:", reply_markup=main_menu_uz)
 
 
 async def expert_ru(msg: Message):
-    text = ("🔰Эксперт\n"
-            " \t<i><b>Истамов Бекзодбек Бахриддинович</b></i>\n\n"
-            )
-    await msg.answer_photo(photo="AgACAgIAAxkBAAIK5WjhkvFVN3eFH7hIXHGc3_6bksNjAAJN-DEbtHEJS8Ecb2txQNXBAQADAgADeQADNgQ",
-                           caption=text, reply_markup=main_menu_uz)
+    text = (
+        "🔰Эксперты\n"
+        "Эксперт по стратегическому развитию\n"
+        "\t<i><b>АЗАМАТ АКБАРОВ</b></i>\n\n"
+        "Эксперт по маркетингу и коммуникациям\n"
+        "\t<i><b>НИГИНА БАТИРАЛИЕВА</b></i>\n\n"
+        "Эксперт по академической деятельности\n"
+        "\t<i><b>ЗАРИФА МУМИНОВА</b></i>\n\n"
+    )
+
+    media = [
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoCBo7esV78dERcJxgmdMNd1QB4SHlgACeQMyG7sxcEsTZWq8vyhbJgEAAwIAA3gAAzYE',
+            caption=text),
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoCJo7es7PRmayH-H-gSnlNTH-tWdEwACLPsxG6q5cUv3c1NN1ypK8AEAAwIAA20AAzYE'),
+        InputMediaPhoto(
+            media='AgACAgIAAxkBAAEfoCRo7et1cDV-ue6ylMwQmR3uu62L0gACegMyG7sxcEtCQ9qFjCwuTAEAAwIAA3gAAzYE')
+    ]
+
+    await msg.answer_media_group(media=media)
+    await msg.answer("⬇️ Воспользуйтесь меню ниже:", reply_markup=main_menu_ru)
 
 
 async def change_lang_text_uz(msg: Message):

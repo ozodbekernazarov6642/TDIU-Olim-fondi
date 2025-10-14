@@ -1,7 +1,7 @@
 from aiogram.types import Message
 from loader import dp, db
 from utils.misc.lang_text import uz_management_info, ru_management_info, fond_rah_uz, fond_rah_ru, kuz_keng_rais_uz, \
-    kuz_keng_raisi_ru, cordinator_uz, cordinato_ru, expert_uz, expert_ru
+    kuz_keng_raisi_ru, cordinator_uz, cordinator_ru, expert_uz, expert_ru
 
 
 @dp.message_handler(text=['👤Rahbariyat', "👤Руководство"])
@@ -34,7 +34,7 @@ async def koordinator(msg: Message):
     if (await db.select_user(str(msg.from_user.id)))['language'] == 'uz':
         await cordinator_uz(msg)
     else:
-        await cordinato_ru(msg)
+        await cordinator_ru(msg)
 
 
 @dp.message_handler(text=['🧠 Ekspert', '🧠 Эксперт'])
