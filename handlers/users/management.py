@@ -43,3 +43,9 @@ async def ekspert(msg: Message):
         await expert_uz(msg)
     else:
         await expert_ru(msg)
+
+
+
+@dp.message_handler(content_types=['photo'])
+async def photo(msg: Message):
+    print(msg.photo[-1].file_id)

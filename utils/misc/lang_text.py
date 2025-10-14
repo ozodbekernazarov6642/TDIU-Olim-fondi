@@ -186,10 +186,10 @@ async def expert_uz(msg: Message):
             "Akademik faoliyat eksperti\n"
             " \t<i><b>ZARIFA MUMINOVA</b></i>\n\n")
     media = [
-        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCBo7esV78dERcJxgmdMNd1QB4SHlgACeQMyG7sxcEsTZWq8vyhbJgEAAwIAA3gAAzYE',
+        InputMediaPhoto(media='AgACAgIAAxkBAAIOAmjueuCV0edFBafla70eveUHQN__AAJL-DEbv8d4S-hVhy2OtOO3AQADAgADbQADNgQ',
                         caption=text),
-        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCJo7es7PRmayH-H-gSnlNTH-tWdEwACLPsxG6q5cUv3c1NN1ypK8AEAAwIAA20AAzYE'),
-        InputMediaPhoto(media='AgACAgIAAxkBAAEfoCRo7et1cDV-ue6ylMwQmR3uu62L0gACegMyG7sxcEtCQ9qFjCwuTAEAAwIAA3gAAzYE')
+        InputMediaPhoto(media='AgACAgIAAxkBAAIOAWjuepyUgaxHWpVbdOUkDGrHjO_aAAJK-DEbv8d4S1DWXzuULdGEAQADAgADbQADNgQ'),
+        InputMediaPhoto(media='AgACAgIAAxkBAAIOA2juewgf41ajbtVTsUA7ZqP7iO69AAJM-DEbv8d4S6aUUwdLnXbDAQADAgADeAADNgQ')
     ]
     await msg.answer_media_group(media=media)
     await msg.answer("⬇️ Quyidagi menyudan foydalaning:", reply_markup=main_menu_uz)
@@ -207,13 +207,10 @@ async def expert_ru(msg: Message):
     )
 
     media = [
-        InputMediaPhoto(
-            media='AgACAgIAAxkBAAEfoCBo7esV78dERcJxgmdMNd1QB4SHlgACeQMyG7sxcEsTZWq8vyhbJgEAAwIAA3gAAzYE',
-            caption=text),
-        InputMediaPhoto(
-            media='AgACAgIAAxkBAAEfoCJo7es7PRmayH-H-gSnlNTH-tWdEwACLPsxG6q5cUv3c1NN1ypK8AEAAwIAA20AAzYE'),
-        InputMediaPhoto(
-            media='AgACAgIAAxkBAAEfoCRo7et1cDV-ue6ylMwQmR3uu62L0gACegMyG7sxcEtCQ9qFjCwuTAEAAwIAA3gAAzYE')
+        InputMediaPhoto(media='AgACAgIAAxkBAAIOAmjueuCV0edFBafla70eveUHQN__AAJL-DEbv8d4S-hVhy2OtOO3AQADAgADbQADNgQ',
+                        caption=text),
+        InputMediaPhoto(media='AgACAgIAAxkBAAIOAWjuepyUgaxHWpVbdOUkDGrHjO_aAAJK-DEbv8d4S1DWXzuULdGEAQADAgADbQADNgQ'),
+        InputMediaPhoto(media='AgACAgIAAxkBAAIOA2juewgf41ajbtVTsUA7ZqP7iO69AAJM-DEbv8d4S6aUUwdLnXbDAQADAgADeAADNgQ')
     ]
 
     await msg.answer_media_group(media=media)
