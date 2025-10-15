@@ -58,24 +58,66 @@ async def ru_appeals_conf(msg: Message):
     await msg.answer(text=text, reply_markup=confirmation_ru, parse_mode='HTML')
 
 
+# async def uz_conf_appeals(call: CallbackQuery, text_):
+#     tz = pytz.timezone("Asia/Tashkent")
+#     tashkent_time = datetime.now(tz)
+#     await bot.send_message(chat_id=ADMINS[1],
+#                            text=f"Murojaat matni:\n<i><b>{text_}</b></i>\n\n Murojaat yuboruvchi:\n{call.from_user.mention}")
+#     text = 'Sizning murojaatingiz "Anonim"ligingizni saqlagan holda masul shaxsga yuborildi✅'
+#     await call.message.answer(text=text, reply_markup=main_menu_uz)
+#     await db.add_appeal(user_id=str(call.from_user.id), message=text_, created_at=tashkent_time.replace(tzinfo=None))
+
+
 async def uz_conf_appeals(call: CallbackQuery, text_):
     tz = pytz.timezone("Asia/Tashkent")
     tashkent_time = datetime.now(tz)
-    await bot.send_message(chat_id=ADMINS[1],
-                           text=f"Murojaat matni:\n<i><b>{text_}</b></i>\n\n Murojaat yuboruvchi:\n{call.from_user.mention}")
-    text = 'Sizning murojaatingiz "Anonim"ligingizni saqlagan holda masul shaxsga yuborildi✅'
-    await call.message.answer(text=text, reply_markup=main_menu_uz)
-    await db.add_appeal(user_id=str(call.from_user.id), message=text_, created_at=tashkent_time.replace(tzinfo=None))
+    appeal = await db.add_appeal(
+        user_id=str(call.from_user.id),
+        message=text_,
+        created_at=tashkent_time.replace(tzinfo=None)
+    )
+    await bot.send_message(
+        chat_id=ADMINS[1],
+        text=(
+            f"📩 <b>Yangi murojaat!</b>\n\n"
+            f"<i>\t{text_}</i>\n\n"
+            f"👤 Yuboruvchi: {call.from_user.mention}\n"
+            f"🆔 ID: <code>{call.from_user.id}</code>\n"
+            f"📝 Murojaat ID: <code>{appeal['id']}</code>\n"
+            f"🌐 Murojaat tili: O'zbek"
+        ),
+        parse_mode="HTML"
+    )
+    await call.message.answer(
+        text='Sizning murojaatingiz anonim tarzda mas’ul shaxsga yuborildi✅',
+        reply_markup=main_menu_uz
+    )
 
 
 async def ru_conf_appeals(call: CallbackQuery, text_):
     tz = pytz.timezone("Asia/Tashkent")
     tashkent_time = datetime.now(tz)
-    await bot.send_message(chat_id=ADMINS[1],
-                           text=f"Текст обращения:\n<i><b>{text_}</b></i>\n\n Отправитель обращения:\n{call.from_user.mention}")
-    text = 'Ваше обращение было отправлено ответственному лицу с сохранением анонимности✅'
-    await call.message.answer(text=text, reply_markup=main_menu_ru)
-    await db.add_appeal(user_id=str(call.from_user.id), message=text_, created_at=tashkent_time.replace(tzinfo=None))
+    appeal = await db.add_appeal(
+        user_id=str(call.from_user.id),
+        message=text_,
+        created_at=tashkent_time.replace(tzinfo=None)
+    )
+    await bot.send_message(
+        chat_id=ADMINS[1],
+        text=(
+            f"📩 <b>Yangi murojaat!</b>\n\n"
+            f"<i>\t{text_}</i>\n\n"
+            f"👤 Yuboruvchi: {call.from_user.mention}\n"
+            f"🆔 ID: <code>{call.from_user.id}</code>\n"
+            f"📝 Murojaat ID: <code>{appeal['id']}</code>\n"
+            f"🌐 Murojaat tili: Rus"
+        ),
+        parse_mode="HTML"
+    )
+    await call.message.answer(
+        text='Ваше обращение анонимно отправлено ответственному лицу✅',
+        reply_markup=main_menu_ru
+    )
 
 
 async def again_write_uz(call: CallbackQuery):

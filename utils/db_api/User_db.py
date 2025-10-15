@@ -156,3 +156,48 @@ class Database:
         ORDER BY d.created_at DESC;
         """
         return await self.execute(sql, fetch=True)
+
+    async def create_table_answers(self):
+        sql = """
+            CREATE TABLE IF NOT EXISTS answers (
+            id SERIAL PRIMARY KEY,
+            appeal_id INT NOT NULL REFERENCES appeals(id) ,
+            answer_text TEXT NOT NULL,
+            created_at TIMESTAMP NOT NULL
+            );
+            """
+        await self.execute(sql, execute=True)
+
+    async def add_answer(self, appeal_id: int, answer_text: str, created_at):
+        sql = """
+        INSERT INTO answers (appeal_id, answer_text, created_at)
+        VALUES ($1, $2, $3)
+        RETURNING *;
+        """
+        return await self.execute(sql, appeal_id, answer_text, created_at, fetchrow=True)
+
+    async def select_appeal_answers(self, appeal_id: int):
+        sql = """
+        SELECT * FROM answers
+        WHERE appeal_id = $1
+        ORDER BY created_at ASC;
+        """
+        return await self.execute(sql, appeal_id, fetch=True)
+
+    async def select_all_appeals_with_answers(self):
+        sql = """
+        SELECT a.id AS appeal_id,
+               a.message,
+               a.created_at AS appeal_created,
+               u.full_name,
+               u.language,
+               ans.answer_text,
+               ans.created_at AS answer_created
+        FROM appeals a
+        LEFT JOIN answers ans ON ans.appeal_id = a.id
+        LEFT JOIN users u ON a.user_id = u.id
+        ORDER BY a.created_at DESC, ans.created_at ASC;
+        """
+        return await self.execute(sql, fetch=True)
+
+

@@ -13,6 +13,7 @@ async def on_startup(dispatcher):
     await db.create_table_users()
     await db.create_table_appeals()
     await db.create_table_documents()
+    await db.create_table_answers()
 
     await set_default_commands(dp)
     await on_startup_notify(dp)
