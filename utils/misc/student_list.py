@@ -32,7 +32,8 @@ students = [
     "Mizomova Aziza",
     "Jurayeva Munisa",
     "Jo‘rayeva Hulkar",
-    "Egamova Muxlisa"
+    "Egamova Muxlisa",
+    "Xazratqulova Nazokat"
 ]
 
 
