@@ -7,6 +7,7 @@ name = "pypi"
 aiogram = "~=2.14"
 environs = "*"
 asyncpg = "*"
+pipenv = "==2025.0.4"
 
 [dev-packages]
 
